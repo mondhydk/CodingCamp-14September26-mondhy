@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Budget Visualizer Tests</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mocha@10.2.0/mocha.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chai@4.3.10/chai.min.js"></script>
+  <script src="../app.js"></script>
+  
+  <style>
+    .mocha-report {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .mocha-report .test.pass {
+      color: #27ae60;
+    }
+    .mocha-report .test.fail {
+      color: #e74c3c;
+    }
+    .mocha-report .test .error {
+      background-color: #fff0f0;
+      border: 1px solid #e74c3c;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 4px;
+    }
+    .mocha-report h1 {
+      color: #333;
+    }
+    .mocha-report .suite {
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="mocha"></div>
+  
+  <script>
+    // Setup Mocha
+    mocha.setup('bdd');
+    
+    // Wait for DOM to be ready
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load test files
+      const testFiles = [
+        'test/balance-display.test.js',
+        'test/responsive-layout.test.js',
+        'test/validator.test.js',
+        'test/sorter.test.js',
+        'test/scenario-tests.js',
+        'test/integration.test.js',
+        'test/performance.test.js'
+      ];
+      
+      let loadCount = 0;
+      
+      testFiles.forEach((file) => {
+        const script = document.createElement('script');
+        script.src = file;
+        script.onload = () => {
+          loadCount++;
+          if (loadCount === testFiles.length) {
+            // Run tests after all files are loaded
+            mocha.run();
+          }
+        };
+        document.head.appendChild(script);
+      });
+    });
+  </script>
+</body>
+</html>
+</content>
