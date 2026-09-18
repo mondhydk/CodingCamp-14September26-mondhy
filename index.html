@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense & Budget Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="main-header">
+    <h1>Expense & Budget Visualizer</h1>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+      <span class="theme-icon">☀️</span>
+      <span class="theme-text">Switch to Dark Mode</span>
+    </button>
+  </header>
+
+  <main class="main-content">
+    <!-- Input Form Component -->
+    <section class="input-form-section">
+      <form id="transaction-form" class="input-form">
+        <h2>Add Transaction</h2>
+        <div class="form-group">
+          <label for="item-name">Item Name</label>
+          <input type="text" id="item-name" name="itemName" placeholder="Enter item name" required>
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" name="amount" placeholder="Enter amount" step="0.01" min="0.01" required>
+          <span class="error-message"></span>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="Food">Food</option>
+            <option value="Transport">Transport</option>
+            <option value="Fun">Fun</option>
+            <option value="Utilities">Utilities</option>
+            <option value="Entertainment">Entertainment</option>
+          </select>
+          <span class="error-message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Transaction</button>
+      </form>
+    </section>
+
+    <!-- Balance Display Component -->
+    <section class="balance-section">
+      <h2>Total Balance</h2>
+      <div id="balance-display" class="balance-display" aria-live="polite">
+        <div class="balance-label">Current Balance</div>
+        <div class="balance-amount-container">
+          <span id="balance-amount" class="balance-amount">$0.00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chart Renderer Component -->
+    <section class="chart-section">
+      <h2>Spending by Category</h2>
+      <div class="chart-container">
+        <canvas id="expense-chart"></canvas>
+      </div>
+      <p id="chart-placeholder" class="chart-placeholder">No transactions to display</p>
+    </section>
+
+    <!-- Transaction List Component -->
+    <section class="transaction-list-section">
+      <h2>Transaction History</h2>
+      
+      <div class="transaction-list-container">
+        <div class="sort-controls">
+          <label for="sort-select">Sort by:</label>
+          <select id="sort-select">
+            <option value="date-desc">Date (Newest First)</option>
+            <option value="amount-desc">Amount (Highest First)</option>
+            <option value="category-asc">Category (A-Z)</option>
+          </select>
+        </div>
+        
+        <ul id="transaction-list" class="transaction-list">
+          <!-- Transactions will be rendered here -->
+        </ul>
+        
+        <div class="empty-state" id="empty-state">
+          <p>No transactions yet. Add your first expense!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Monthly Summary Component -->
+    <section class="monthly-summary-section">
+      <h2>Monthly Summary</h2>
+      <div class="monthly-summary-container">
+        <div class="summary-header">
+          <h3>Monthly Summary</h3>
+          <div class="month-selector">
+            <button class="nav-btn" id="prev-month" aria-label="Previous month">◀</button>
+            <span id="current-month" class="current-month">September 2026</span>
+            <button class="nav-btn" id="next-month" aria-label="Next month">▶</button>
+          </div>
+        </div>
+        
+        <div class="category-breakdown" id="category-breakdown">
+          <!-- Category totals rendered here -->
+        </div>
+        
+        <div class="summary-empty" id="summary-empty">
+          <p>No transactions for this month</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 Expense & Budget Visualizer</p>
+  </footer>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- App JavaScript -->
+  <script src="app.js" type="module"></script>
+</body>
+</html>

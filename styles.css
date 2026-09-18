@@ -1,0 +1,671 @@
+/* CSS Custom Properties for Theming */
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #f5f5f5;
+  --bg-color-secondary: #ffffff;
+  --text-color: #333333;
+  --text-color-secondary: #666666;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --accent-color: #4a90d9;
+  --accent-color-hover: #357abd;
+  --danger-color: #e74c3c;
+  --success-color: #27ae60;
+  --border-color: #e0e0e0;
+  --error-color: #e74c3c;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --chart-background: #ffffff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --bg-color-secondary: #16213e;
+  --text-color: #e0e0e0;
+  --text-color-secondary: #a0a0a0;
+  --card-bg: #16213e;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --accent-color: #4da6ff;
+  --accent-color-hover: #3385ff;
+  --danger-color: #ff6b6b;
+  --success-color: #51cf66;
+  --border-color: #303050;
+  --error-color: #ff6b6b;
+  --input-bg: #252545;
+  --input-border: #303050;
+  --chart-background: #1a1a2e;
+}
+
+/* Base Reset and Typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Layout Components */
+.main-header {
+  background-color: var(--card-bg);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent-color);
+}
+
+.theme-toggle .theme-icon {
+  font-size: 1.2rem;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Form Styles */
+.input-form-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-form h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--text-color-secondary);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.2);
+}
+
+.form-group input.error,
+.form-group select.error {
+  border-color: var(--error-color);
+}
+
+.error-message {
+  font-size: 0.85rem;
+  color: var(--error-color);
+  min-height: 1.2em;
+  visibility: hidden;
+}
+
+.error-message.visible {
+  visibility: visible;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Balance Display */
+.balance-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+.balance-section h2 {
+  font-size: 1rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.balance-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.balance-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Balance styling based on value */
+.balance-amount-container {
+  transition: color 0.3s ease;
+}
+
+.balance-amount-container.positive-balance {
+  color: var(--success-color);
+}
+
+.balance-amount-container.negative-balance {
+  color: var(--danger-color);
+}
+
+.balance-amount-container.neutral-balance {
+  color: var(--text-color);
+}
+
+/* Chart Section */
+.chart-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.chart-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.chart-placeholder {
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Transaction List */
+.transaction-list-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.transaction-list-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.transaction-list-container {
+  position: relative;
+}
+
+.sort-controls {
+  margin-bottom: 1rem;
+}
+
+.sort-controls label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color-secondary);
+  margin-right: 0.5rem;
+}
+
+.sort-controls select {
+  padding: 0.5rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.sort-controls select:hover {
+  border-color: var(--accent-color);
+}
+
+.transaction-list {
+  list-style: none;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  font-style: italic;
+  background-color: var(--bg-color);
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.empty-state.hidden {
+  display: none;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="dark"] .transaction-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.transaction-details {
+  flex: 1;
+}
+
+.transaction-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.transaction-meta {
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.transaction-amount.negative {
+  color: var(--danger-color);
+}
+
+.transaction-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-delete {
+  background-color: var(--danger-color);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* Monthly Summary */
+.monthly-summary-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.monthly-summary-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.monthly-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.summary-category {
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.summary-category-label {
+  font-size: 0.85rem;
+  color: var(--text-color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.summary-category-value {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* Footer */
+.main-footer {
+  background-color: var(--card-bg);
+  padding: 1rem 2rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+/* Mobile layout (< 600px) - Single column */
+@media (max-width: 599px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  .main-header {
+    padding: 1rem;
+  }
+
+  .main-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .theme-toggle .theme-icon {
+    font-size: 1rem;
+  }
+
+  .theme-toggle .theme-text {
+    display: none;
+  }
+
+  .balance-section {
+    padding: 1rem;
+  }
+
+  .balance-amount {
+    font-size: 2rem;
+  }
+
+  .chart-section {
+    padding: 1rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+
+  .transaction-list-section {
+    padding: 1rem;
+  }
+
+  .transaction-list-section h2 {
+    font-size: 1.1rem;
+  }
+
+  .transaction-item {
+    padding: 0.75rem;
+  }
+
+  .transaction-meta {
+    font-size: 0.8rem;
+  }
+
+  .transaction-amount {
+    font-size: 1rem;
+  }
+
+  .btn-delete {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .monthly-summary-section {
+    padding: 1rem;
+  }
+
+  .monthly-summary {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .summary-category {
+    padding: 0.75rem;
+  }
+
+  .summary-category-value {
+    font-size: 1rem;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .current-month {
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop layout (≥ 600px) - Multiple columns */
+@media (min-width: 600px) {
+  .main-content {
+    padding: 2rem;
+  }
+
+  .main-header {
+    padding: 1rem 2rem;
+  }
+
+  .theme-toggle .theme-text {
+    display: inline;
+  }
+
+  .balance-section {
+    padding: 1.5rem;
+  }
+
+  .balance-amount {
+    font-size: 2.5rem;
+  }
+
+  .chart-section {
+    padding: 1.5rem;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+
+  .transaction-list-section {
+    padding: 1.5rem;
+  }
+
+  .transaction-list-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .transaction-item {
+    padding: 1rem;
+  }
+
+  .monthly-summary-section {
+    padding: 1.5rem;
+  }
+}
+
+/* Tablet layout (≥ 768px) */
+@media (min-width: 768px) {
+  .main-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .input-form-section {
+    grid-column: 1 / -1;
+  }
+
+  .chart-section {
+    grid-column: 1 / -1;
+  }
+
+  .transaction-list-section {
+    grid-column: 1 / -1;
+  }
+
+  .monthly-summary-section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Large screens (≥ 1024px) */
+@media (min-width: 1024px) {
+  .main-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .input-form-section {
+    grid-column: 1 / 2;
+  }
+
+  .balance-section {
+    grid-column: 2 / 3;
+  }
+
+  .chart-section {
+    grid-column: 1 / -1;
+  }
+
+  .transaction-list-section {
+    grid-column: 1 / -1;
+  }
+
+  .monthly-summary-section {
+    grid-column: 1 / -1;
+  }
+}
+
+/* High Resolution Displays */
+@media (min-resolution: 2dppx) {
+  .transaction-list::-webkit-scrollbar {
+    width: 6px;
+  }
+}
+
+/* Scrollbar Styles */
+.transaction-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transaction-list::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+.transaction-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+.transaction-list::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-color-secondary);
+}
+
+/* Print Styles */
+@media print {
+  .main-header,
+  .theme-toggle,
+  .input-form-section,
+  .transaction-list-section .transaction-actions {
+    display: none !important;
+  }
+
+  .main-content {
+    display: block;
+  }
+
+  .balance-section,
+  .chart-section,
+  .monthly-summary-section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
